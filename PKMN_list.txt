@@ -131,7 +131,7 @@ DEX, NAME, Catch Rate, Flee Rate
 337, Lunatone, 45, 60
 356, Dusclops, 90, 90
 364, Sealeo, 120, 60
-0, Metang, 3, 60
+0, Metang, 20, 60
 433, Chingling, 120, 120
 27, Sandshrew, 255, 90
 28, Sandslash, 90, 60
@@ -148,7 +148,7 @@ DEX, NAME, Catch Rate, Flee Rate
 122, Mr. Mime., 45, 90
 125, Electabuzz, 45, 120
 200, Misdreavus, 45, 120
-2, Beldum, 3, 90
+2, Beldum, 25, 90
 399, Bidoof, 255, 90
 437, Bronzong, 90, 60
 353, Shuppet, 225, 150
