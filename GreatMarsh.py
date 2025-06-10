@@ -22,13 +22,13 @@ def calculate_catch_odds(rate, catch=6):
     # pull the modified catch rate
     rate = get_modified_rate(rate, catch)
     # calculate catch rate after ball and health (full health with a safari ball)
-    a = int(rate * 1.5 / 3)
+    a = (rate * 1.5 / 3)
     if a >= 255:
         p = 1    
     else:
         # odds of a shake
-        b = int(int('0xffff0', 16)/(int(math.sqrt(int(
-                 math.sqrt(int('0xff0000', 16)/a))))))        
+        b = ('0xffff0', 16)/((math.sqrt((
+                 math.sqrt(('0xff0000', 16)/a))))))        
         # odds of successful capture
         p = pow((b/65536), 4)
     return p
@@ -55,29 +55,29 @@ def get_modified_rate(rate, mod=6):
     if mod == 6:
         return rate
     elif mod == 5:
-        return int(rate*10/15)
+        return (rate*10/15)
     elif mod == 4:
-        return int(rate*10/20)
+        return (rate*10/20)
     elif mod == 3:
-        return int(rate*10/25)
+        return (rate*10/25)
     elif mod == 2:
-        return int(rate*10/30)
+        return (rate*10/30)
     elif mod == 1:
-        return int(rate*10/35)
+        return (rate*10/35)
     elif mod == 0:
-        return int(rate*10/40)
+        return (rate*10/40)
     elif mod == 7:
-        return int(rate*15/10)
+        return (rate*15/10)
     elif mod == 8:
-        return int(rate*20/10)
+        return (rate*20/10)
     elif mod == 9:
-        return int(rate*25/10)
+        return (rate*25/10)
     elif mod == 10:
-        return int(rate*30/10)
+        return (rate*30/10)
     elif mod == 11:
-        return int(rate*35/10)
+        return (rate*35/10)
     elif mod == 12:
-        return int(rate*40/10)
+        return (rate*40/10)
 
 def calculate_flee_odds(rate, mod=6):
     '''
