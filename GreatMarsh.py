@@ -1,20 +1,31 @@
 import math
 
+import csv
+
+def load_pokemon_data(filename):
+    pokemon_data = {}
+    with open(filename, 'r', newline='', encoding='utf-8') as file:
+        reader = csv.DictReader(file)
+        for row in reader:
+            name = row['NAME'].upper().strip()
+            catch_rate = int(row['Catch Rate'])
+            flee_rate = int(row['Flee Rate'])
+            pokemon_data[name] = (flee_rate, catch_rate)
+    return pokemon_data
+
+_pokemon_data = None
+
 def get_fc(name):
     '''
-    name (STR) -> Name of a Pokemon that can be found in GM
+    name (STR) -> Name of a Pokemon that can be found in PKMN_list.txt
     Returns (flee(INT), catch(INT))
     '''
-    fc = [(60, 90), (60, 75), (60, 45), (60, 90), (60, 190), (60, 90), (60, 150), (60, 200), (60, 120), (60, 127), (60, 45), (60, 200),
-          (90, 190), (90, 45), (90, 255), (90, 255), (90, 225), (90, 255), (90, 255), (120, 190), (120, 90), (120, 75), (120, 255),
-          (120, 255), (120, 150), (120, 225), (120, 190), (120, 200), (120, 255), (120, 120), (120, 75), (150, 45), (150, 140), (0, 75)]
-    names = ['ARBOK', 'GOLDUCK', 'GYARADOS', 'NOCTOWL', 'MARILL', 'QUAGSIRE', 'ROSELIA', 'TROPIUS', 'STARAVIA', 'BIBAREL', 'DRAPION',
-             'CARNIVINE', 'PSYDUCK', 'TANGELA', 'MAGIKARP', 'HOOTHOOT', 'CARVANHA', 'STARLY', 'BIDOOF', 'PARAS', 'EXEGGCUTE',
-             'YANMA', 'WOOPER', 'SHROOMISH', 'AZURILL', 'GULPIN', 'BARBOACH', 'KEKLEON', 'BUDEW', 'SKORUPI', 'TOXICROAK',
-             'KANGASKHAN', 'CROAGUNK', 'WHISCASH']
-    name = name.upper()
-    num = names.index(name)
-    return fc[num]
+    global _pokemon_data
+    if _pokemon_data is None:
+        _pokemon_data = load_pokemon_data('PKMN_list.txt')
+    
+    name = name.upper().strip()
+    return _pokemon_data[name]
 
 def calculate_catch_odds(rate, catch=6):
     '''Intakes the current stage of catch
